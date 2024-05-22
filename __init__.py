@@ -1,1 +1,1 @@
-from .pyqt6_columns import ColumnWithHeader
+from .pyqt6_columns import *
