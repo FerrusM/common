@@ -1,6 +1,17 @@
 import datetime
 
 
+def print_function_runtime(decorated_function):
+    def wrapper_function(*args, **kwargs):
+        start_time: datetime.datetime = datetime.datetime.now()
+        result = decorated_function(*args, **kwargs)
+        delta: float = (datetime.datetime.now() - start_time).total_seconds()
+        print('Время выполнения функции \"{0}\": {1}c.'.format(decorated_function.__qualname__, delta))
+        return result
+
+    return wrapper_function
+
+
 def getUtcDateTime() -> datetime.datetime:
     """Возвращает текущие дату и время в UTC."""
     tz: datetime.tzinfo = datetime.timezone.utc
